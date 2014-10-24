@@ -11,6 +11,11 @@ import org.junit.Test;
 
 import com.trigram.model.Trigram;
 
+/**
+ * 
+ * @author jose
+ *
+ */
 public class TrigramTest {
 	Trigram trigram1;
 	Trigram trigram2;

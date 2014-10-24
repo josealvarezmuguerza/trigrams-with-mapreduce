@@ -2,21 +2,48 @@ package com.trigram.main;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
 import com.trigram.dao.TrigramDao;
 import com.trigram.mapred.TrigramDriver;
 
+/**
+ * 
+ * @author jose
+ * 
+ */
 public class Kata14 {
 
-	private static final String OUTPUT_FILE_NAME = "new_book.txt";
 	private static final Logger LOG = Logger.getLogger(Kata14.class);
 	private TrigramDao dao = null;
 
-	public final static String SPACE = " ";
+	public static Properties properties;
+	public static final String SPACE = " ";
+	public static final String SLASH = "/";
+
+	static {
+		try {
+			
+			properties = new Properties();
+			String propFileName = "trigram.properties";
+	 
+			InputStream inputStream = Kata14.class.getClassLoader().getResourceAsStream(propFileName);
+			properties.load(inputStream);
+			if (inputStream == null) {
+				LOG.error("#### Unable to load properties file - null" );
+			}
+			
+		} catch (Exception e) {
+			LOG.error("#### Unable to load properties file - " + e.getMessage());
+		}
+	}
 
 	public static void main(String[] args) throws Exception {
 		LOG.debug("##### Running : "
@@ -104,7 +131,8 @@ public class Kata14 {
 
 	private void writeFile(final StringBuilder fileSB, final String outputPath) {
 
-		File file = new File(outputPath + "/" + OUTPUT_FILE_NAME);
+		File file = new File(outputPath + "/"
+				+ properties.getProperty("trigram.output.filename"));
 		BufferedWriter writer = null;
 		try {
 			try {

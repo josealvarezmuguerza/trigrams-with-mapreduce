@@ -9,8 +9,14 @@ import java.util.Random;
 
 import org.apache.log4j.Logger;
 
+import com.trigram.main.Kata14;
 import com.trigram.model.Trigram;
 
+/**
+ * 
+ * @author jose
+ *
+ */
 public class TrigramDao {
 	private Random generator = new Random();
 	private BufferedReader bReader = null;
@@ -21,7 +27,7 @@ public class TrigramDao {
 		LOG.debug("##### Running : "
 				+ Thread.currentThread().getStackTrace()[1].getMethodName());
 
-		String filename = outputPath + "MR/part-r-00000";
+		String filename = outputPath + Kata14.properties.getProperty("trigram.mr.output.path") + Kata14.SLASH + Kata14.properties.getProperty("trigram.mr.output.filename");
 
 		try {
 
@@ -39,8 +45,6 @@ public class TrigramDao {
 						trigramMap.put(trigram.getKey(), trigram);
 
 					} catch (Exception e) {
-						System.err.println("#### Error loading trigram : "
-								+ line + " - " + e.getMessage());
 						LOG.error("#### Error loading trigram : " + line
 								+ " - " + e.getMessage());
 					}
@@ -52,8 +56,6 @@ public class TrigramDao {
 			if (bReader == null) {
 				LOG.error("#### Unable to find trigrams file: " + filename
 						+ " - " + io.getMessage());
-				System.err.println("#### Unable to find trigrams file: "
-						+ filename);
 			}
 			io.printStackTrace();
 		} finally {

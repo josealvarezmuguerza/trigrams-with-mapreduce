@@ -1,14 +1,9 @@
 package com.trigram.main;
 
 import static org.junit.Assert.assertEquals;
-
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -18,13 +13,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.trigram.dao.TrigramDao;
-import com.trigram.main.Kata14;
 import com.trigram.model.Trigram;
 
+/**
+ * 
+ * @author jose
+ *
+ */
 public class Kata14Test {
 
 	TrigramDao daoMock; 
-
 	Trigram trigram ;
 	Kata14 kata14;
 	Method generateNewBookMethod;

@@ -8,6 +8,11 @@ import org.apache.log4j.Logger;
 
 import com.trigram.main.Kata14;
 
+/**
+ * 
+ * @author jose
+ *
+ */
 public class TrigramReducer extends Reducer<Text, Text, Text, Text> {
 
 	private Text value =  new Text();

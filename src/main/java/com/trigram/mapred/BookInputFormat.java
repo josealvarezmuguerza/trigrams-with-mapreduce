@@ -11,6 +11,11 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 
+/**
+ * 
+ * @author jose
+ *
+ */
 @InterfaceAudience.Public
 @InterfaceStability.Stable
 public class BookInputFormat extends TextInputFormat {

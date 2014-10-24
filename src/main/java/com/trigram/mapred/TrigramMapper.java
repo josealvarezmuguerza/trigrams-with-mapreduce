@@ -11,6 +11,11 @@ import org.apache.log4j.Logger;
 
 import com.trigram.main.Kata14;
 
+/**
+ * 
+ * @author jose
+ *
+ */
 public class TrigramMapper extends Mapper<LongWritable, Text, Text, Text> {
 
 	private Text key = new Text();
@@ -30,7 +35,7 @@ public class TrigramMapper extends Mapper<LongWritable, Text, Text, Text> {
 
 		// remove all non word or number
 		String lineString = line.toString().replaceAll(
-				"[^A-Za-z0-9\\s\\t\\'\\.\\,\\:]", "");
+				Kata14.properties.getProperty("trigram.mr.cleansing.pattern"), "");
 		StringTokenizer lineTokenized = new StringTokenizer(lineString);
 
 		while (lineTokenized.hasMoreElements()) {
